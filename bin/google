@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+require "rubygems"
+require "thor"
+
+OSX_CHROME_PATH = "/Applications/Google Chrome.app"
+
+class Google < Thor
+  default_task :search
+
+  desc "search QUERY", "whatever"
+  def search(query = nil)
+    if query
+      Kernel.exec "open", OSX_CHROME_PATH, "http://www.google.com/?#sclient=psy-ab&hl=en&source=hp&q=#{query}&btnK=Google+Search"
+    else
+      Kernel.exec "open", OSX_CHROME_PATH
+    end
+  end
+end
+
+if ARGV.empty?
+  # Perform the default, it doesn't have to be a Thor task
+  Google.start
+else
+  # Start Thor as usual
+  Google.new.search(ARGV.join("+"))
+end
+
