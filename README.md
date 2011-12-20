@@ -1,10 +1,10 @@
-# Google-Term
+# GoogleTerminal
 
 Creates a `google` terminal command to help you google faster
 
 ## Install
 
-`gem install google-term`
+`gem install google_terminal`
 
 ## Summary
 
